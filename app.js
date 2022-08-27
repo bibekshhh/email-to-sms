@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 
 app.route('/').get(async(req, res) => {
-    const mailToSearch = "bibekshh1@gmail.com";
+    const mailToSearch = "newer_than:2d";
 
     const parseInboxData = await main();
     async function main() {
