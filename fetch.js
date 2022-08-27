@@ -16,7 +16,7 @@ const pubSubClient = new PubSub();
 
 function listenForMessages() {
     console.log('Listening')
-    fetch(`http://email-to-sms.heroku-app.com`)
+    fetch(`http://email-to-sms.herokuapp.com`)
         // References an existing subscription
     const subscription = pubSubClient.subscription(subscriptionNameOrId);
 
@@ -28,7 +28,7 @@ function listenForMessages() {
         console.log(`\tAttributes: ${message.attributes}`);
         messageCount += 1;
 
-        fetch(`http://email-to-sms.heroku-app.com`)
+        fetch(`http://email-to-sms.herokuapp.com`)
 
         // "Ack" (acknowledge receipt of) the message
         message.ack();
