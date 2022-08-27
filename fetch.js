@@ -6,6 +6,8 @@ const projectId = 'email-to-sms-360208';
 const subscriptionNameOrId = 'projects/email-to-sms-360208/subscriptions/email-to-sms';
 const timeout = 1;
 
+const PORT = process.env.PORT || 8080;
+
 // Imports the Google Cloud client library
 const { PubSub } = require('@google-cloud/pubsub')
 
@@ -14,7 +16,7 @@ const pubSubClient = new PubSub();
 
 function listenForMessages() {
     console.log('Listening')
-    fetch('http://localhost:8080')
+    fetch(`http://email-to-whatsapp.heroku-app.com:${PORT}`)
         // References an existing subscription
     const subscription = pubSubClient.subscription(subscriptionNameOrId);
 
@@ -26,8 +28,9 @@ function listenForMessages() {
         console.log(`\tAttributes: ${message.attributes}`);
         messageCount += 1;
 
-        fetch('http://localhost:8080')
-            // "Ack" (acknowledge receipt of) the message
+        fetch(`http://email-to-whatsapp.heroku-app.com:${PORT}`)
+
+        // "Ack" (acknowledge receipt of) the message
         message.ack();
     };
 
