@@ -1,6 +1,7 @@
 const myFunctions = require('./utils');
 const fetchFunction = require('./fetch');
 const express = require('express')
+var axios = require('axios');
 
 require('dotenv').config();
 require('./config/database').connect();
@@ -62,19 +63,48 @@ app.route('/').get(async(req, res) => {
                 }
             });
 
-            var whatsappMsg = `Sender: ${item.sentBy}\nMessage: ${item.data}`
+            var whatsappMsg = `Sender: ${item.sentBy}\nMessage: ${item.data}`;
 
-            client.messages
-                .create({
-                    body: whatsappMsg,
-                    from: 'whatsapp:+14155238886',
-                    to: 'whatsapp:+9779827314543'
+            var data = JSON.stringify({
+                "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": "9779827314543",
+                "type": "text",
+                "text": {
+                    "preview_url": false,
+                    "body": whatsappMsg
+                }
+            });
+
+            var config = {
+                method: 'post',
+                url: 'https://graph.facebook.com/v13.0/101709939348365/messages',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.messageId}`
+                },
+                data: data
+            };
+
+            axios(config)
+                .then(function(response) {
+                    console.log(JSON.stringify(response.data));
                 })
-                .then(message => {
-                    console.log("Message sent to whatsapp!")
-                    console.log(message.sid)
-                })
-                .done();
+                .catch(function(error) {
+                    console.log(error);
+                });
+
+            // client.messages
+            //     .create({
+            //         body: whatsappMsg,
+            //         from: 'whatsapp:+14155238886',
+            //         to: 'whatsapp:+9779827314543'
+            //     })
+            //     .then(message => {
+            //         console.log("Message sent to whatsapp!")
+            //         console.log(message.sid)
+            //     })
+            //     .done();
         }
     };
 
