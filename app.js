@@ -51,7 +51,7 @@ app.route('/').get(async(req, res) => {
             var newMail = new Mail({
                 mailId: item.id,
                 mailData: item.data,
-                sender: item.sender
+                sender: item.sentBy
             });
 
             newMail.save((error, data) => {
@@ -62,7 +62,7 @@ app.route('/').get(async(req, res) => {
                 }
             });
 
-            var whatsappMsg = `Sender: ${item.sender}\nMessage: ${item.data}`
+            var whatsappMsg = `Sender: ${item.sentBy}\nMessage: ${item.data}`
 
             client.messages
                 .create({
