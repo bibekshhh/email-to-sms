@@ -81,11 +81,22 @@ async function readInboxContent(searchText) {
     const message = await searchText;
     const item = message[0];
 
+    var sentBy = "";
+    const headers = item.payload.headers;
+
+    headers.forEach(data => {
+        if (data.name == "From") {
+            const sender = data.value;
+            var match = sender.slice(sender.lastIndexOf(' '));
+            sentBy = match
+        }
+    })
+
     const encodedMessage = item.payload.body.data || item.payload["parts"][0].body.data;
 
     if (typeof encodedMessage !== 'undefined') {
         const decodedMessage = Buffer.from(encodedMessage, "base64").toString('utf-8').replace(/\n|\r/g, "");
-        messageArr.push({ id: item.id, data: decodedMessage })
+        messageArr.push({ id: item.id, data: decodedMessage, sentBy: sentBy })
     }
 
     return messageArr

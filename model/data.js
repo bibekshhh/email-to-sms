@@ -6,6 +6,9 @@ const mailSchema = new mongoose.Schema({
     },
     mailData: {
         type: String
+    },
+    sender: {
+        type: String
     }
 });
 

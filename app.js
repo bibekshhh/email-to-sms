@@ -50,7 +50,8 @@ app.route('/').get(async(req, res) => {
 
             var newMail = new Mail({
                 mailId: item.id,
-                mailData: item.data
+                mailData: item.data,
+                sender: item.sender
             });
 
             newMail.save((error, data) => {
@@ -61,9 +62,11 @@ app.route('/').get(async(req, res) => {
                 }
             });
 
+            var whatsappMsg = `Sender: ${item.sender}\nMessage: ${item.data}`
+
             client.messages
                 .create({
-                    body: parseInboxData[0].data,
+                    body: whatsappMsg,
                     from: 'whatsapp:+14155238886',
                     to: 'whatsapp:+9779827314543'
                 })
