@@ -11,9 +11,9 @@ fetchFunction()
 const Mail = require('./model/data')
 
 //importing twilio
-const accountSid = process.env.accountSid;
-const authToken = process.env.authToken;
-const client = require('twilio')(accountSid, authToken);
+// const accountSid = process.env.accountSid;
+// const authToken = process.env.authToken;
+// const client = require('twilio')(accountSid, authToken);
 
 //creating an express server
 const PORT = process.env.PORT || 8080;
