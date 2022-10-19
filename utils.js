@@ -103,29 +103,29 @@ async function readInboxContent(searchText) {
 }
 
 async function watchMyLabel(token) {
-    // var data = JSON.stringify({
-    //     "topicName": "projects/email-to-sms-360208/topics/email-to-sms",
-    //     "labelIds": [
-    //         "INBOX"
-    //     ]
-    // });
-    // var config = {
-    //     method: 'post',
-    //     url: 'https://gmail.googleapis.com/gmail/v1/users/me/watch',
-    //     headers: {
-    //         'Authorization': `Bearer ${token}`,
-    //         'Content-Type': 'application/json'
-    //     },
-    //     data: data
-    // };
+    var data = JSON.stringify({
+        "topicName": "projects/email-to-sms-360208/topics/email-to-sms",
+        "labelIds": [
+            "INBOX"
+        ]
+    });
+    var config = {
+        method: 'post',
+        url: 'https://gmail.googleapis.com/gmail/v1/users/me/watch',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        data: data
+    };
 
-    // axios(config)
-    //     .then(function(response) {
-    //         console.log(JSON.stringify(response.data));
-    //     })
-    //     .catch(function(error) {
-    //         console.log(error);
-    //     });
+    axios(config)
+        .then(function(response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
 }
 
 module.exports = { getAccessToken, searchGmail, readGmailContent, readInboxContent, watchMyLabel };
