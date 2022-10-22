@@ -4,10 +4,10 @@ const qs = require('qs');
 
 async function getAccessToken() {
     var data = qs.stringify({
-        'client_id': '1095764734515-28gt40ol0qd3inmmuiqu40s20fihr6re.apps.googleusercontent.com',
-        'client_secret': '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',
-        'refresh_token': '1//04mCqb09yjgymCgYIARAAGAQSNwF-L9IrClD36PuOnOS4jNAoY18qinz9fXPPJOPWBDJKnni7J8W729UIFA8ctMME1A-odfbj_Bg',
-        'grant_type': 'refresh_token'
+        'client_id': '',
+        'client_secret': '',
+        'refresh_token': '',
+        'grant_type': ''
     });
     var config = {
         method: 'post',
