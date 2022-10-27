@@ -2,13 +2,16 @@ const mongoose = require('mongoose');
 
 const mailSchema = new mongoose.Schema({
     mailId: {
-        type: String
+        type: String,
+        required: true
     },
     mailData: {
-        type: String
+        type: String,
+        required: true
     },
     sender: {
-        type: String
+        type: String,
+        required: true
     }
 });
 
