@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const { MONGO_URI } = process.env;
 
+if(!MONGO_URI) {
+    console.log("MONGO URI not found. Application Shutting down")
+    process.exit(1)
+    return
+}
+
 exports.connect = () => {
     mongoose
         .connect(MONGO_URI, {
