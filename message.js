@@ -2,7 +2,9 @@ var axios = require('axios');
 var data = JSON.stringify({
     "messaging_product": "whatsapp",
     "recipient_type": "individual",
-    "to": <receiver number>,
+
+    "to": "<Receiver Number>",
+
     "type": "text",
     "text": {
         "preview_url": false,
@@ -15,7 +17,8 @@ var config = {
     url: 'https://graph.facebook.com/v13.0/<your facebook cloud id>/messages',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer <your auth token>`
+        'Authorization': 'Beared <your auth token>'
+
     },
     data: data
 };
