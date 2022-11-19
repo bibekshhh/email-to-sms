@@ -1,4 +1,4 @@
-# EMAIL TO SMS
+## EMAIL TO SMS
 
 ### Forward your incomming mails to Whatsapp SMS
 
