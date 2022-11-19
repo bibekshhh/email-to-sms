@@ -4,29 +4,24 @@
 
 ### Steps to setup locally
 
-- Step 1 <br>
-Clone the repository
+- Clone the repository
 ```
 https://github.com/bibekshhh/email-to-sms.git
 ```
 
-- Step 2 <br>
-Move into the directory
+- Move into the directory
 ```
 cd email-to-sms
 ```
 
-- Step 3 <br>
-Install the required npm packages which are necessary for the program to run
+- Install the required npm packages which are necessary for the program to run
 ```
 npm install
 ```
 
-- Step 4 <br>
-> Add your credentials in credentials.json, keys.json and .env
+- Add your credentials in credentials.json, keys.json and .env
 
-- Step 5 <br>
-If you are using it for `ordinary use` then just start the program and use
+- If you are using it for `ordinary use` then just start the program and use
 ```
 npm run start
 ```
