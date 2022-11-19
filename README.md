@@ -1,6 +1,6 @@
 # EMAIL TO SMS
 
-## FORWARD YOUR INCOMING MAILS DIRECTLY TO WHATSAPP SMS
+### Forward your incomming mails to Whatsapp SMS
 
 ### Steps to setup locally
 
